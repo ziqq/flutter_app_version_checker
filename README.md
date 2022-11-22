@@ -1,4 +1,4 @@
-# App Version Checker
+# Flutter App Version Checker
 
 ## Description
 
