@@ -1,7 +1,7 @@
 # App Version Checker
 
-this package is used to check if your app has a new version on playstore or apple app store.
-or you can even check what is the latest version of another app on playstore or apple app store.
+This package is used to check if your app has a new version on playstore or apple app store.
+Or you can even check what is the latest version of another app on playstore or apple app store.
 
 ### Installing
 
@@ -25,11 +25,11 @@ dependencies:
 
   void checkVersion() async {
     _checker.checkUpdate().then((value) {
-      print(value.canUpdate); //return true if update is available
-      print(value.currentVersion); //return current app version
-      print(value.newVersion); //return the new app version
-      print(value.appURL); //return the app url
-      print(value.errorMessage); //return error message if found else it will return null
+      print(value.appURL);         // return the app url
+      print(value.canUpdate);      // return true if update is available
+      print(value.newVersion);     // return the new app version
+      print(value.currentVersion); // return current app version
+      print(value.errorMessage);   // return error message if found else it will return null
     });
   }
 ```
@@ -38,7 +38,8 @@ dependencies:
 ```dart
   final _checker = AppVersionChecker(
       appId: "specify the app id (optional)",
-      currentVersion: "specify the current version (optional)");
+      currentVersion: "specify the current version (optional)",
+  );
 ...
 ```
 
