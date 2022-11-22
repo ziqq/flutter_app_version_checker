@@ -5,7 +5,7 @@
 This package is used to check if your app has a new version on playstore or apple app store.
 Or you can even check what is the latest version of another app on playstore or apple app store.
 
-### Installing
+### Installation
 
 Add App Version Checker to your pubspec:
 
@@ -14,7 +14,7 @@ dependencies:
   flutter_app_version_checker: any # or the latest version on Pub
 ```
 
-### Usage
+### Example
 
 ```dart
   final _checker = AppVersionChecker();
