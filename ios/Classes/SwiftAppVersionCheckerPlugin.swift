@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftAppVersionCheckerPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "app_version_checker", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "flutter_app_version_checker", binaryMessenger: registrar.messenger())
     let instance = SwiftAppVersionCheckerPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
