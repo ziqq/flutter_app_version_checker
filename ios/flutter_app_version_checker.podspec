@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_app_version_checker'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.license          = { :type => 'MIT', :file => './../LICENSE' }
   s.homepage         = 'https://github.com/ziqq/flutter_app_version_checker'
   s.authors           = { 'Anton Ustinoff' => 'a.a.ustinoff@gmail.com' }
