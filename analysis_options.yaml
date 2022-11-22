@@ -6,9 +6,6 @@ analyzer:
     - dart_code_metrics
   exclude:
     - "build/**"
-    - "**/app/app.logger.dart"
-    # - "**/app/app.router.dart"
-    - "**/app/locator.config.dart"
   strong-mode:
     implicit-casts: false
     # implicit-dynamic: false
