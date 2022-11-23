@@ -128,7 +128,7 @@ packages:
     source: hosted
     version: "6.1.4"
   flutter:
-    dependency: "direct main"
+    dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -138,7 +138,7 @@ packages:
       path: "."
       ref: main
       resolved-ref: fc30f4ef9ac33b95ffa0fca41426b87c733b8198
-      url: "git@github.com:ziqq/flutter_lint_rules.git"
+      url: "https://github.com/ziqq/flutter_lint_rules.git"
     source: git
     version: "1.6.0"
   flutter_lints:

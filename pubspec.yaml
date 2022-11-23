@@ -20,7 +20,7 @@ dev_dependencies:
 
   flutter_lint_rules:
     git:
-      url: git@github.com:ziqq/flutter_lint_rules.git
+      url: https://github.com/ziqq/flutter_lint_rules.git
       ref: main
 
 # For information on the generic Dart part of this file, see the
