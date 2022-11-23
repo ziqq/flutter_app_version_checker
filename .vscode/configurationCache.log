@@ -1,1 +1,0 @@
-{"buildTargets":[".PHONY","build_android","build_ios","clean","config_dev","config_prod","format","get_packages","help","icons","lint","locator","locator_watch","run_unit"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
