@@ -24,6 +24,10 @@ class AppVersionChecker {
   /// if [appId] is null the [appId] will take the Flutter package identifier
   final String? appId;
 
+  /// The locale your app store
+  /// Default value is [ru]
+  final String? locale;
+
   /// Select The marketplace of your app
   /// default will be `AndroidStore.GooglePlayStore`
   final AndroidStore androidStore;
@@ -31,6 +35,7 @@ class AppVersionChecker {
   AppVersionChecker({
     this.currentVersion,
     this.appId,
+    this.locale = 'ru',
     this.androidStore = AndroidStore.googlePlayStore,
   });
 
@@ -46,7 +51,11 @@ class AppVersionChecker {
           return await _checkPlayStore(currentVersion, packageName);
       }
     } else if (Platform.isIOS) {
-      return await _checkAppleStore(currentVersion, packageName);
+      return await _checkAppleStore(
+        currentVersion,
+        packageName,
+        locale: locale,
+      );
     } else {
       return AppCheckerResult(
         currentVersion,
@@ -59,15 +68,16 @@ class AppVersionChecker {
 
   Future<AppCheckerResult> _checkAppleStore(
     String currentVersion,
-    String packageName,
-  ) async {
+    String packageName, {
+    String? locale,
+  }) async {
     String? errorMsg;
     String? newVersion;
     String? url;
 
     final uri = Uri.https(
       'itunes.apple.com',
-      '/lookup',
+      '/$locale/lookup',
       {'bundleId': packageName},
     );
 
@@ -78,6 +88,7 @@ class AppVersionChecker {
             "Can't find an app in the Apple Store with the id: $packageName";
       } else {
         final jsonObj = jsonDecode(response.body);
+
         final List results = List.from(jsonObj['results'] as Iterable<dynamic>);
         if (results.isEmpty) {
           errorMsg =

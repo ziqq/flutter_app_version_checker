@@ -1,3 +1,4 @@
+version: 1.1.0+1
 name: app_version_checker_example
 description: Demonstrates how to use the app_version_checker plugin.
 

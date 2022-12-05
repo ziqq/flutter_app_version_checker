@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_version_checker/flutter_app_version_checker.dart';
 
@@ -12,11 +14,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _beautyBoxChecker = AppVersionChecker(
-    appId: "ru.beautybox.twa",
+    appId: Platform.isAndroid ? 'ru.beautybox.twa' : 'ru.beautybox.app',
     androidStore: AndroidStore.apkPure,
   );
   final _tikTokChecker = AppVersionChecker(
-    appId: "com.zhiliaoapp.musically",
+    appId: 'com.zhiliaoapp.musically',
     androidStore: AndroidStore.apkPure,
   );
   String? tikTokValue;
