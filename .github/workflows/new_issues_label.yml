@@ -11,6 +11,6 @@ on:
       - opened
 jobs:
   label_issues:
-    uses: surfstudio/flutter-ci-workflows/.github/workflows/new_issues_label.yml@main
+    uses: ziqq/flutter_ci_workflows/.github/workflows/new_issues_label.yml@main
     secrets:
       SECRET_ISSUES: ${{ secrets.SECRET_ISSUES }}

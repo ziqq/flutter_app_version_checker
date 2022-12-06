@@ -12,6 +12,6 @@ on:
 jobs:
   label_pull_request:
     if: ${{ github.event.label.name == 'WIP' }}
-    uses: surfstudio/flutter-ci-workflows/.github/workflows/new_pull_request_label.yml@main
+    uses: ziqq/flutter_ci_workflows/.github/workflows/new_pull_request_label.yml@main
     secrets:
       SECRET_ISSUES: ${{ secrets.SECRET_ISSUES }}

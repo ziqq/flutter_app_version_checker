@@ -7,11 +7,11 @@ on:
 
 jobs:
   analysis:
-    uses: surfstudio/flutter-ci-workflows/.github/workflows/analysis.yml@main
+    uses: ziqq/flutter_ci_workflows/.github/workflows/analysis.yml@main
 
   package-publishing:
     needs: analysis
-    uses: surfstudio/flutter-ci-workflows/.github/workflows/publish_to_pub.yml@main
+    uses: ziqq/flutter_ci_workflows/.github/workflows/publish_to_pub.yml@main
     with:
       PANA_TOTAL: '100'
     secrets:
