@@ -1,3 +1,5 @@
+## 1.3.0
+- Added check on Web platform
 ## 1.2.0
 - Added AppStore default locale
 ## 1.1.0

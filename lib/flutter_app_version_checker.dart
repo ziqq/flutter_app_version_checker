@@ -15,18 +15,20 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 enum AndroidStore { googlePlayStore, apkPure }
 
+bool _kIsWeb = false;
+
 class AppVersionChecker {
   /// The current version of the app.
   /// if [currentVersion] is null the [currentVersion] will take the Flutter package version
   final String? currentVersion;
 
-  /// The id of the app (com.exemple.your_app).
-  /// if [appId] is null the [appId] will take the Flutter package identifier
-  final String? appId;
-
   /// The locale your app store
   /// Default value is [ru]
   final String? locale;
+
+  /// The id of the app (com.exemple.your_app).
+  /// if [appId] is null the [appId] will take the Flutter package identifier
+  final String? appId;
 
   /// Select The marketplace of your app
   /// default will be `AndroidStore.GooglePlayStore`
@@ -40,10 +42,28 @@ class AppVersionChecker {
   });
 
   Future<AppCheckerResult> checkUpdate() async {
+    try {
+      if (Platform.isAndroid || Platform.isIOS) {
+        _kIsWeb = false;
+      } else {
+        _kIsWeb = true;
+      }
+    } catch (e) {
+      _kIsWeb = true;
+    }
+
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final currentVersion = this.currentVersion ?? packageInfo.version;
     final packageName = appId ?? packageInfo.packageName;
-    if (Platform.isAndroid) {
+
+    if (_kIsWeb) {
+      return AppCheckerResult(
+        currentVersion,
+        null,
+        '',
+        'The Web platform is not yet supported by this package.',
+      );
+    } else if (Platform.isAndroid) {
       switch (androidStore) {
         case AndroidStore.apkPure:
           return await _checkApkPureStore(currentVersion, packageName);
@@ -61,7 +81,7 @@ class AppVersionChecker {
         currentVersion,
         null,
         '',
-        'The target platform "${Platform.operatingSystem}" is not yet supported by this package.',
+        'The target platform ${Platform.operatingSystem} is not yet supported by this package.',
       );
     }
   }
@@ -88,8 +108,8 @@ class AppVersionChecker {
             "Can't find an app in the Apple Store with the id: $packageName";
       } else {
         final jsonObj = jsonDecode(response.body);
-
         final List results = List.from(jsonObj['results'] as Iterable<dynamic>);
+
         if (results.isEmpty) {
           errorMsg =
               "Can't find an app in the Apple Store with the id: $packageName";
@@ -130,8 +150,8 @@ class AppVersionChecker {
             "Can't find an app in the Google Play Store with the id: $packageName";
       } else {
         newVersion = RegExp(r',\[\[\["([0-9,\.]*)"]],')
-            .firstMatch(response.body)!
-            .group(1);
+            .firstMatch(response.body)
+            ?.group(1);
         url = uri.toString();
       }
     } catch (e) {
